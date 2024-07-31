@@ -15,22 +15,7 @@ function WeatherFetcher() {
 		const data = await fetchWeatherData(location);
 
 		if (data) {
-			const locationKey = Object.keys(data.locations)[0];
-			const locationData = data.locations[locationKey];
-
-			if (locationData && locationData.currentConditions) {
-				const selectedData = {
-					address: locationData.address,
-					temp: locationData.currentConditions.temp,
-					conditions: locationData.currentConditions.conditions,
-					humidity: locationData.currentConditions.humidity,
-					dailyForecasts: locationData.values,
-					datetime: locationData.currentConditions.datetime,
-				};
-				setWeatherData(selectedData);
-			} else {
-				console.error('currentConditions is undefined or null');
-			}
+			setWeatherData(data);
 		}
 	};
 
@@ -44,11 +29,16 @@ function WeatherFetcher() {
 
 			{weatherData && (
 				<div>
-					{weatherData.dailyForecasts && (
+					{weatherData.locations && (
 						<div>
 							<div className='card-container'>
-								<h3>Weather forecast: {weatherData.address}</h3>
-								{weatherData.dailyForecasts.map((forecast, index) => (
+								<h3>
+									Weather forecast:
+									{weatherData.locations[Object.keys(weatherData.locations)[0]].address}
+								</h3>
+								{weatherData.locations[
+									Object.keys(weatherData.locations)[0]
+								].values.map((forecast, index) => (
 									<WeatherCard
 										key={index}
 										date={new Date(forecast.datetimeStr)
@@ -60,6 +50,7 @@ function WeatherFetcher() {
 										temp={forecast.temp}
 										conditions={forecast.conditions}
 										humidity={forecast.humidity}
+										dew={forecast.sunrise}
 									/>
 								))}
 							</div>
