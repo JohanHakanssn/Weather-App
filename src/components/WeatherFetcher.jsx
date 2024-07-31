@@ -23,9 +23,9 @@ function WeatherFetcher() {
 					address: locationData.address,
 					temp: locationData.currentConditions.temp,
 					conditions: locationData.currentConditions.conditions,
-					feelsLike: locationData.currentConditions.feelslike,
 					humidity: locationData.currentConditions.humidity,
 					dailyForecasts: locationData.values,
+					datetime: locationData.currentConditions.datetime,
 				};
 				setWeatherData(selectedData);
 			} else {
