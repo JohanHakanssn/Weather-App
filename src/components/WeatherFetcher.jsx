@@ -6,7 +6,7 @@ import SearchField from './SearchField';
 // Hanterar input-förändringar, hämtar väderdata från API:et och visar upp datan på sidan
 function WeatherFetcher() {
 	const [location, handleInputChange] = UserInputChange();
-	const [weatherData, setWeaterData] = useState(null);
+	const [weatherData, setWeatherData] = useState(null);
 
 	// Hanterar formulärets submit-händelse
 	const handleSubmit = async (event) => {
@@ -14,16 +14,22 @@ function WeatherFetcher() {
 		const data = await fetchWeatherData(location);
 
 		if (data) {
-			const selectedData = {
-				address: data.resolvedAddress,
-				description: data.description,
-				temp: data.currentConditions.temp,
-				conditions: data.currentConditions.conditions,
-				feelsLike: data.currentConditions.feelslike,
-				humidity: data.currentConditions.humidity,
-				icon: data.currentConditions.icon,
-			};
-			setWeaterData(selectedData);
+			const locationKey = Object.keys(data.locations)[0];
+			const locationData = data.locations[locationKey];
+
+			if (locationData && locationData.currentConditions) {
+				const selectedData = {
+					address: locationData.address,
+					temp: locationData.currentConditions.temp,
+					conditions: locationData.currentConditions.conditions,
+					feelsLike: locationData.currentConditions.feelslike,
+					humidity: locationData.currentConditions.humidity,
+					dailyForecasts: locationData.values,
+				};
+				setWeatherData(selectedData);
+			} else {
+				console.error('currentConditions is undefined or null');
+			}
 		}
 	};
 
@@ -37,13 +43,24 @@ function WeatherFetcher() {
 
 			{weatherData && (
 				<div>
-					<h2>Weather for {weatherData.address}</h2>
-					<img src='' alt='' />
-					<p>{weatherData.description}</p>
-					<p>Temperature: {weatherData.temp} °C</p>
-					<p>Conditions: {weatherData.conditions}</p>
-					<p>Feels like: {weatherData.feelsLike}</p>
-					<p>Humidity: {weatherData.humidity}</p>
+					<h3>Weather for {weatherData.address}</h3>
+
+					{weatherData.dailyForecasts && (
+						<div>
+							<h2>Daily Forecasts:</h2>
+
+							<ul>
+								{weatherData.dailyForecasts.map((forecast, index) => (
+									<li key={index}>
+										<p>Date: {new Date(forecast.datetime).toLocaleDateString()}</p>
+										<p>Temperature: {forecast.temp} °C</p>
+										<p>Conditions: {forecast.conditions}</p>
+										<p>Humidity: {forecast.humidity}</p>
+									</li>
+								))}
+							</ul>
+						</div>
+					)}
 				</div>
 			)}
 		</div>
