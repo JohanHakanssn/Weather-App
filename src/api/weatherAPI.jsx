@@ -1,11 +1,11 @@
 // API Key and base URL
 const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 const baseUrl =
-	'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline';
+	'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/forecast';
 
 // Funktion för att hämta data från API:et
 export const fetchWeatherData = async (location) => {
-	const url = `${baseUrl}/${location}?aggregateHours=24&unitGroup=metric&shortColumnNames=false&contentType=json&key=${apiKey}`;
+	const url = `${baseUrl}/${location}?aggregateHours=24&unitGroup=metric&shortColumnNames=false&contentType=json&key=${apiKey}&iconSet=icons1`;
 
 	try {
 		const response = await fetch(url, { mode: 'cors' });
