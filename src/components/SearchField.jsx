@@ -13,7 +13,7 @@ function SearchField({ value, onChange, onSubmit }) {
 					onChange={onChange}
 					value={value}
 				/>
-				<button type='submit'>Sök</button>
+				<button type='submit'>Search</button>
 			</form>
 		</div>
 	);

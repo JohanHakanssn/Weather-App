@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { fetchWeatherData } from '../api/weatherAPI';
 import { UserInputChange } from '../hooks/userInputChange';
 import SearchField from './SearchField';
+import WeatherCard from './WeatherCard';
 
 // Hanterar input-förändringar, hämtar väderdata från API:et och visar upp datan på sidan
 function WeatherFetcher() {
@@ -43,22 +44,25 @@ function WeatherFetcher() {
 
 			{weatherData && (
 				<div>
-					<h3>Weather for {weatherData.address}</h3>
-
 					{weatherData.dailyForecasts && (
 						<div>
-							<h2>Daily Forecasts:</h2>
-
-							<ul>
+							<div className='card-container'>
+								<h3>Weather forecast: {weatherData.address}</h3>
 								{weatherData.dailyForecasts.map((forecast, index) => (
-									<li key={index}>
-										<p>Date: {new Date(forecast.datetime).toLocaleDateString()}</p>
-										<p>Temperature: {forecast.temp} °C</p>
-										<p>Conditions: {forecast.conditions}</p>
-										<p>Humidity: {forecast.humidity}</p>
-									</li>
+									<WeatherCard
+										key={index}
+										date={new Date(forecast.datetimeStr)
+											.toLocaleDateString('en-SE', {
+												day: 'numeric',
+												weekday: 'long',
+											})
+											.toUpperCase()}
+										temp={forecast.temp}
+										conditions={forecast.conditions}
+										humidity={forecast.humidity}
+									/>
 								))}
-							</ul>
+							</div>
 						</div>
 					)}
 				</div>
