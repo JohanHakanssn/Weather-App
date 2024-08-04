@@ -3,6 +3,7 @@ import { fetchWeatherData } from '../api/weatherAPI';
 import { UserInputChange } from '../hooks/userInputChange';
 import SearchField from './SearchField';
 import WeatherCard from './WeatherCard';
+import Today from './Today';
 
 // Hanterar input-förändringar, hämtar väderdata från API:et och visar upp datan på sidan
 function WeatherFetcher() {
@@ -26,6 +27,8 @@ function WeatherFetcher() {
 				onChange={handleInputChange}
 				onSubmit={handleSubmit}
 			/>
+
+			<Today />
 
 			{weatherData && (
 				<div>
