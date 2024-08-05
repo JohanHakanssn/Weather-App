@@ -1,10 +1,10 @@
 // API Key and base URL
 const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 const baseUrl =
-	'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast';
+	'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/timeline';
 
 export const fetchWeatherData = async (location) => {
-	const url = `${baseUrl}?locations=${location}&aggregateHours=1&iconSet='icons1'&forecastDays=7&unitGroup=metric&shortColumnNames=false&contentType=json&key=${apiKey}`;
+	const url = `${baseUrl}?locations=${location}&aggregateHours=1&forecastDays=7&unitGroup=metric&shortColumnNames=false&contentType=json&key=${apiKey}`;
 
 	try {
 		const response = await fetch(url, { mode: 'cors' });
