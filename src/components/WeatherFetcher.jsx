@@ -28,7 +28,7 @@ function WeatherFetcher() {
 				onSubmit={handleSubmit}
 			/>
 
-			<Today />
+			{weatherData && <Today weatherData={weatherData} />}
 
 			{weatherData && (
 				<div>

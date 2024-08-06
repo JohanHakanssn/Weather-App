@@ -58,7 +58,12 @@ h3 {
 	color: #333;
 }
 
-.weather-icon {
-	width: 50px; /* Justera storleken efter behov */
-	height: 50px; /* Justera storleken efter behov */
+.today--icon {
+	width: 100px;
+	height: 100px;
+}
+
+.today--hourly--icon {
+	width: 25px;
+	height: 25px;
 }

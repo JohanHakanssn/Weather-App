@@ -9,3 +9,5 @@ export const UserInputChange = () => {
 
 	return [value, handleInputChange];
 };
+
+export const todaysDate = new Date().toISOString().split('T')[0];

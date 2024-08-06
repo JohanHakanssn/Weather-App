@@ -4,7 +4,7 @@ const baseUrl =
 	'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/timeline';
 
 export const fetchWeatherData = async (location) => {
-	const url = `${baseUrl}?locations=${location}&aggregateHours=1&forecastDays=7&unitGroup=metric&shortColumnNames=false&contentType=json&key=${apiKey}`;
+	const url = `${baseUrl}?locations=${location}&aggregateHours=1&iconSet=icons2&forecastDays=7&unitGroup=metric&shortColumnNames=false&contentType=json&key=${apiKey}`;
 
 	try {
 		const response = await fetch(url, { mode: 'cors' });
