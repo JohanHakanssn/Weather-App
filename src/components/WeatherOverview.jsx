@@ -19,7 +19,7 @@ function WeatherOverview() {
 
 			{weatherData && <Today weatherData={weatherData} />}
 
-			{weatherData && weatherData.days && (
+			{weatherData && (
 				<div>
 					<div className='card-container'>
 						<h3>Weekly forecast: </h3>
