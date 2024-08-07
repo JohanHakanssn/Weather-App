@@ -10,7 +10,7 @@ function WeatherCard({ date, temp, conditions, rainChance, icon }) {
 			<img src={imageSrc} alt='Weater icon' className='weaterCard--icon' />
 			<p>Highest temp: {temp}°C</p>
 			<p>{conditions}</p>
-			<p>Chanse of rain: {rainChance}%</p>
+			<p>Chance of rain: {rainChance}%</p>
 		</div>
 	);
 }
