@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { fetchWeatherData } from '../api/weatherAPI';
+import { handleSubmit } from '../utils/helperFunctions';
 import { UserInputChange } from '../hooks/userInputChange';
 import SearchField from './SearchField';
 import WeatherCard from './WeatherCard';
@@ -10,22 +10,12 @@ function WeatherFetcher() {
 	const [location, handleInputChange] = UserInputChange();
 	const [weatherData, setWeatherData] = useState(null);
 
-	// Hanterar formulärets submit-händelse
-	const handleSubmit = async (event) => {
-		event.preventDefault();
-		const data = await fetchWeatherData(location);
-
-		if (data) {
-			setWeatherData(data);
-		}
-	};
-
 	return (
 		<div>
 			<SearchField
 				value={location}
 				onChange={handleInputChange}
-				onSubmit={handleSubmit}
+				onSubmit={(event) => handleSubmit(event, location, setWeatherData)}
 			/>
 
 			{weatherData && <Today weatherData={weatherData} />}
@@ -34,7 +24,7 @@ function WeatherFetcher() {
 				<div>
 					<div className='card-container'>
 						<h3>Weekly forecast: </h3>
-						{weatherData.days.map((day, index) => (
+						{weatherData.days.slice(1).map((day, index) => (
 							<WeatherCard
 								key={index}
 								date={day.datetime}
