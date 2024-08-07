@@ -5,8 +5,7 @@ import SearchField from './SearchField';
 import WeatherCard from './WeatherCard';
 import Today from './Today';
 
-// Hanterar input-förändringar, hämtar väderdata från API:et och visar upp datan på sidan
-function WeatherFetcher() {
+function WeatherOverview() {
 	const [location, handleInputChange] = UserInputChange();
 	const [weatherData, setWeatherData] = useState(null);
 
@@ -41,4 +40,4 @@ function WeatherFetcher() {
 	);
 }
 
-export default WeatherFetcher;
+export default WeatherOverview;

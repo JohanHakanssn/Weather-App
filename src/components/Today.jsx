@@ -3,8 +3,6 @@ import icons from '../assets/styles/images/icons';
 import { formatTime } from '../utils/helperFunctions';
 
 function Today({ weatherData }) {
-	const icon = weatherData.currentConditions.icon;
-	const imageSrc = icons[icon];
 	return (
 		<div>
 			<h2>Todays weather in {weatherData.address}</h2>
@@ -12,7 +10,11 @@ function Today({ weatherData }) {
 			<div className='today--Container'>
 				{<h2>{weatherData.days[0].datetime}</h2>}
 				<p>{weatherData.description}</p>
-				<img src={imageSrc} alt='Weather Icon' className='today--icon' />
+				<img
+					src={icons[weatherData.days[0].icon]}
+					alt='Weather Icon'
+					className='today--icon'
+				/>
 				<p>Temp: {weatherData.currentConditions.temp}°C</p>
 				<p>Humidity: {weatherData.currentConditions.humidity}%</p>
 				<p>Sunrise: {formatTime(weatherData.currentConditions.sunrise)}</p>

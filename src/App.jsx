@@ -1,10 +1,10 @@
 import './assets/styles/global.css';
-import WeatherFetcher from './components/WeatherFetcher';
+import WeatherOverview from './components/WeatherOverview';
 
 function App() {
 	return (
 		<div>
-			<WeatherFetcher />
+			<WeatherOverview />
 		</div>
 	);
 }
