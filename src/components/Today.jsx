@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { todaysDate } from '../hooks/userInputChange';
 import icons from '../assets/styles/images/icons';
+import { formatTime } from '../utils/helperFunctions';
 
 function Today({ weatherData }) {
 	const icon = weatherData.currentConditions.icon;
@@ -15,13 +16,14 @@ function Today({ weatherData }) {
 				<img src={imageSrc} alt='Weather Icon' className='today--icon' />
 				<p>Temp: {weatherData.currentConditions.temp}°C</p>
 				<p>Humidity: {weatherData.currentConditions.humidity}%</p>
-				<p>Sunrise: {weatherData.currentConditions.sunrise}</p>
-				<p>Sunset: {weatherData.currentConditions.sunset}</p>
+				<p>Sunrise: {formatTime(weatherData.currentConditions.sunrise)}</p>
+				<p>Sunset: {formatTime(weatherData.currentConditions.sunset)}</p>
+				<p>Chance of rain: {weatherData.days[0].precipprob}%</p>
 			</div>
 			<div className='forecast--Container'>
 				{weatherData.days[0].hours.map((hour, index) => (
 					<div key={index} className='hourly--Forecast'>
-						<p> {hour.datetime.split(':').slice(0, 2).join(':')}</p>
+						<p> {formatTime(hour.datetime)}</p>
 						<img
 							src={icons[hour.icon]}
 							alt='Hourly Weather icon'

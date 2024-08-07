@@ -30,35 +30,21 @@ function WeatherFetcher() {
 
 			{weatherData && <Today weatherData={weatherData} />}
 
-			{weatherData && (
+			{weatherData && weatherData.days && (
 				<div>
-					{weatherData.locations && (
-						<div>
-							<div className='card-container'>
-								<h3>
-									Weather forecast:
-									{weatherData.locations[Object.keys(weatherData.locations)[0]].address}
-								</h3>
-								{weatherData.locations[
-									Object.keys(weatherData.locations)[0]
-								].values.map((forecast, index) => (
-									<WeatherCard
-										key={index}
-										date={new Date(forecast.datetimeStr)
-											.toLocaleDateString('en-SE', {
-												day: 'numeric',
-												weekday: 'long',
-											})
-											.toUpperCase()}
-										temp={forecast.temp}
-										conditions={forecast.conditions}
-										humidity={forecast.humidity}
-										dew={forecast.sunrise}
-									/>
-								))}
-							</div>
-						</div>
-					)}
+					<div className='card-container'>
+						<h3>Weekly forecast: </h3>
+						{weatherData.days.map((day, index) => (
+							<WeatherCard
+								key={index}
+								date={day.datetime}
+								temp={day.tempmax}
+								icon={day.icon}
+								rainChance={day.precipprob}
+								conditions={day.description}
+							/>
+						))}
+					</div>
 				</div>
 			)}
 		</div>
