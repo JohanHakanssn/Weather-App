@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import icons from '../assets/styles/images/icons';
-import { formatTime } from '../utils/helperFunctions';
+import { formatDayAndDate, formatTime } from '../utils/helperFunctions';
 
 function Today({ weatherData }) {
 	return (
 		<div>
 			<h2>Todays weather in {weatherData.address}</h2>
 			<div className='today--Container'>
-				<h2>{weatherData.days[0].datetime}</h2>
+				<h2>{formatDayAndDate(weatherData.days[0].datetime)}</h2>
 				<p>{weatherData.description}</p>
 				<img
 					src={icons[weatherData.days[0].icon]}
