@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const UserInputChange = () => {
+export const useInputChange = () => {
 	const [value, setValue] = useState('');
 
 	const handleInputChange = (event) => {

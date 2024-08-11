@@ -6,9 +6,8 @@ function Today({ weatherData }) {
 	return (
 		<div>
 			<h2>Todays weather in {weatherData.address}</h2>
-
 			<div className='today--Container'>
-				{<h2>{weatherData.days[0].datetime}</h2>}
+				<h2>{weatherData.days[0].datetime}</h2>
 				<p>{weatherData.description}</p>
 				<img
 					src={icons[weatherData.days[0].icon]}

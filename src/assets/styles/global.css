@@ -1,3 +1,14 @@
+*,
+*::before *::backdrop {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	line-height: 1.5;
+}
+
 body {
 	text-align: center;
 	padding-top: 2rem;
@@ -28,10 +39,12 @@ h3 {
 
 .today--Container {
 	border-radius: 8px;
-	padding: 16px;
+	padding: 1.5rem;
 	background-color: rgb(122, 204, 255);
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 	text-align: center;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 
 .forecast--Container {
@@ -42,6 +55,7 @@ h3 {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 	border-radius: 8px;
 	padding: 1rem;
+	margin-top: 1rem;
 }
 
 .hourly--Forecast {
@@ -72,4 +86,46 @@ h3 {
 .weaterCard--icon {
 	width: 100px;
 	height: 100px;
+}
+
+.welcome--div {
+	width: 50ch;
+	margin: 0 auto;
+	margin-top: 5rem;
+	background-color: rgb(112, 198, 252);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+	padding: 1rem;
+}
+
+.welcome--div p {
+	font-size: large;
+	padding-bottom: 1rem;
+}
+
+.searchField--container {
+	padding: 1rem;
+}
+
+.searchField--input {
+	border-radius: 0.4rem;
+	height: 2rem;
+	width: 40vw;
+	font-size: large;
+	padding-left: 0.3rem;
+	border-style: none;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.search--btn {
+	margin-left: 1rem;
+	cursor: pointer;
+	font-size: 1em;
+	border-radius: 0.4rem;
+	border-style: none;
+	padding: 10px;
+}
+
+.search--btn:hover {
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+	background-color: #dfdfdf;
 }

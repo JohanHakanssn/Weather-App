@@ -3,6 +3,15 @@ const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 const baseUrl =
 	'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/timeline';
 
+export const handleSubmit = async (event, location, setWeatherData) => {
+	event.preventDefault();
+	const data = await fetchWeatherData(location);
+
+	if (data) {
+		setWeatherData(data);
+	}
+};
+
 export const fetchWeatherData = async (location) => {
 	const url = `${baseUrl}?locations=${location}&aggregateHours=1&iconSet=icons2&forecastDays=7&unitGroup=metric&shortColumnNames=false&contentType=json&key=${apiKey}`;
 
